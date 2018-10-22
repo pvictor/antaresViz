@@ -32,6 +32,12 @@ globalVariables(
 .requireRhdf5_Antares <- antaresRead:::.requireRhdf5_Antares
 .checkColumns <- antaresProcessing:::.checkColumns
 .checkAttrs <- antaresProcessing:::.checkAttrs
+.check_x <- antaresRead:::.check_x
+.check_x_simOptions <- antaresRead:::.check_x_simOptions
+.isSimOpts <- antaresRead:::.isSimOpts
+.isListSimOpts <- antaresRead:::.isListSimOpts
+.isAntaresData <- antaresRead:::.isAntaresData
+.check_x_antaresData <- antaresRead:::.check_x_antaresData
 
 DEFAULT_CAT_COLORS <- c("#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd",
                       "#8c564b", "#e377c2", "#7f7f7f", "#bcbd22", "#17becf")
