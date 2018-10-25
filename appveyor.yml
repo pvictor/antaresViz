@@ -28,8 +28,10 @@ environment:
 
   - R_VERSION: release
     R_ARCH: x64
+    USE_RTOOLS: true
 
   - R_VERSION: stable
+    USE_RTOOLS: true
 
   - R_VERSION: patched
     USE_RTOOLS: true
