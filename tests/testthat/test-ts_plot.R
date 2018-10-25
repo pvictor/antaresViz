@@ -412,7 +412,8 @@ describe("tsPlot, no interactive, x and refStudy are optsH5 ", {
     pathNewH5File <- file.path(pathNewH5, list.files(pathNewH5))
     .h5Antares_edit_variable(
       pathH5 = pathNewH5File, 
-      link = myLink, 
+      instanceData = myLink,
+      classData = "links",
       timeId = 1:100, 
       antVar = "FLOW LIN.", 
       newValue = 15000
@@ -465,7 +466,8 @@ describe("tsPlot, no interactive, x is a list of optH5 and refStudy are optsH5 "
     myLink <- getLinks()[1]
     .h5Antares_edit_variable(
       pathH5 = pathH5FileToEdit, 
-      link = myLink, 
+      instanceData = myLink,
+      classData = "links",
       timeId = 1:100, 
       antVar = "FLOW LIN.", 
       newValue = newValueFlow
@@ -567,7 +569,8 @@ describe("tsPlot, interactive, x and refStudy are optsH5 ", {
     pathNewH5File <- file.path(pathNewH5, list.files(pathNewH5))
     .h5Antares_edit_variable(
       pathH5 = pathNewH5File, 
-      area = "b", 
+      instanceData = "b",
+      classData = "areas",
       timeId = 1:100, 
       antVar = "LOAD", 
       newValue = 15000,
@@ -715,7 +718,8 @@ describe("tsPlot, interactive, x is a list of optsH5 and refStudy optsH5", {
     for (mcYearToTest in mcYearToTestList){
       .h5Antares_edit_variable(
         pathH5 = pathH5FileToEdit, 
-        link = myLink,
+        instanceData = myLink,
+        classData = "links",
         timeId = 1:100, 
         antVar = myVar, 
         newValue = newValueFlow,

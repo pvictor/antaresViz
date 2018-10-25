@@ -562,7 +562,8 @@ describe("exchangesStack, no interactive, x and refStudy are optsH5 ", {
     myLink <- getLinks()[1]
     .h5Antares_edit_variable(
       pathH5 = pathNewH5File, 
-      link = myLink, 
+      instanceData = myLink,
+      classData = "links",
       timeId = 1:40, 
       antVar = "FLOW LIN.", 
       newValue = 15000
@@ -615,7 +616,8 @@ describe("exchangesStack, no interactive, x is a list of optH5 and refStudy are 
     myLink <- getLinks()[1]
     .h5Antares_edit_variable(
       pathH5 = pathH5FileToEdit, 
-      link = myLink, 
+      instanceData = myLink,
+      classData = "links",
       timeId = 1:40, 
       antVar = "FLOW LIN.", 
       newValue = newValueFlow
@@ -728,7 +730,8 @@ describe("exchangesStack, interactive, x and refStudy are optsH5 ", {
     myLink <- getLinks()[1]
     .h5Antares_edit_variable(
       pathH5 = pathNewH5File, 
-      link = myLink, 
+      instanceData = myLink,
+      classData = "links",
       timeId = 1:40, 
       antVar = "FLOW LIN.", 
       newValue = 15000,
@@ -824,7 +827,8 @@ describe("exchangesStack, interactive, x is a list of optsH5 and refStudy optsH5
     for (mcYearToTest in mcYearToTestList){
       .h5Antares_edit_variable(
         pathH5 = pathH5FileToEdit, 
-        link = myLink,
+        instanceData = myLink,
+        classData = "links",
         timeId = 1:40, 
         antVar = "FLOW LIN.", 
         newValue = newValueFlow,

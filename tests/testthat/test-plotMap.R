@@ -299,7 +299,8 @@ describe("plotMap, interactive, x and refStudy are optsH5", {
     newValue <- 15000
     .h5Antares_edit_variable(
       pathH5 = pathNewH5File, 
-      area = myArea, 
+      instanceData = myArea,
+      classData = "areas",
       timeId = 1:40, 
       antVar = "LOAD",
       newValue = newValue

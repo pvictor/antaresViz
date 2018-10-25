@@ -145,7 +145,8 @@ describe("prodStack must work with refStudy, if x and refStudy are optsH5, ", {
     pathNewH5File <- file.path(pathNewH5, list.files(pathNewH5))
     .h5Antares_edit_variable(
       pathH5 = pathNewH5File, 
-      area = myArea, 
+      instanceData = myArea,
+      classData = "areas",
       timeId = 1:40, 
       antVar = "LIGNITE", 
       newValue = 15000
@@ -203,7 +204,8 @@ describe("prodStack must work with refStudy, if x is a list of optsH5 and refStu
     newValueLignite <- 100000
     .h5Antares_edit_variable(
       pathH5 = pathH5FileToEdit, 
-      area = myArea, 
+      instanceData = myArea,
+      classData = "areas",
       timeId = 1:40, 
       antVar = "LIGNITE", 
       newValue = newValueLignite
@@ -524,7 +526,8 @@ describe("prodStack must work with refStudy, if interactive is set to TRUE and i
     pathNewH5File <- file.path(pathNewH5, list.files(pathNewH5))
     .h5Antares_edit_variable(
       pathH5 = pathNewH5File, 
-      area = myArea, 
+      instanceData = myArea,
+      classData = "areas",
       timeId = 1:40, 
       antVar = "LIGNITE", 
       newValue = 15000,
@@ -612,7 +615,8 @@ describe("prodStack must work with refStudy, if interactive is set to TRUE and i
     for (mcYearToTest in mcYearToTestList){
       .h5Antares_edit_variable(
         pathH5 = pathH5FileToEdit, 
-        area = myArea, 
+        instanceData = myArea,
+        classData = "areas",
         timeId = 1:40, 
         antVar = "GAS", 
         newValue = newValueGAS,
