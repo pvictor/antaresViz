@@ -16,6 +16,13 @@ install:
 
 environment:
   matrix:
+  - R_VERSION: release
+    R_ARCH: x64
+    USE_RTOOLS: true
+
+  - R_VERSION: patched
+    USE_RTOOLS: true
+    
   - R_VERSION: devel
     GCC_PATH: mingw_32
     USE_RTOOLS: true
@@ -26,20 +33,10 @@ environment:
     GCC_PATH: mingw_64
     USE_RTOOLS: true
 
-  - R_VERSION: release
-    R_ARCH: x64
-    USE_RTOOLS: true
-
   - R_VERSION: stable
     USE_RTOOLS: true
 
-  - R_VERSION: patched
-    USE_RTOOLS: true
-  
-
-
 build_script:
-  - set _R_CHECK_FORCE_SUGGESTS_=false
   - travis-tool.sh install_deps
   #before 
   #- travis-tool.sh install_bioc zlibbioc
@@ -48,6 +45,7 @@ build_script:
   - travis-tool.sh install_bioc_deps
   - ./travis-tool.sh install_github rte-antares-rpackage/antaresProcessing@develop
   - ./travis-tool.sh install_github rte-antares-rpackage/antaresRead@develop
+  - set _R_CHECK_FORCE_SUGGESTS_=false
   #- ./travis-tool.sh install_github tidyverse/tidyselect 
   #- ./travis-tool.sh install_github rte-antares-rpackage/antaresMaps@develop
   #- ./travis-tool.sh install_github rte-antares-rpackage/leaflet.minicharts
