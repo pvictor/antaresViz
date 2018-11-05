@@ -13,7 +13,6 @@ install:
   ps: Bootstrap
 
 # Adapt as necessary starting from here
-
 environment:
   matrix:
   - R_VERSION: release
@@ -22,30 +21,17 @@ environment:
 
   - R_VERSION: patched
     USE_RTOOLS: true
-    
-  - R_VERSION: devel
-    GCC_PATH: mingw_32
-    USE_RTOOLS: true
-    CRAN: http://cran.rstudio.com
 
-  - R_VERSION: devel
-    R_ARCH: x64
-    GCC_PATH: mingw_64
-    USE_RTOOLS: true
-
-  - R_VERSION: stable
-    USE_RTOOLS: true
 
 build_script:
   - travis-tool.sh install_deps
-  - travis-tool.sh install_bioc_deps
-  - ./travis-tool.sh install_github rte-antares-rpackage/antaresProcessing@develop
-  - ./travis-tool.sh install_github rte-antares-rpackage/antaresRead@develop
-
 #before  - ./travis-tool.sh install_github Bioconductor-mirror/zlibbioc
 #  - ./travis-tool.sh install_github Bioconductor-mirror/rhdf5
 #after
-
+  - travis-tool.sh install_bioc_deps
+  - ./travis-tool.sh install_github rte-antares-rpackage/antaresRead@develop
+  - ./travis-tool.sh install_github rte-antares-rpackage/antaresProcessing@develop
+  
 test_script:
   - travis-tool.sh run_tests
 
