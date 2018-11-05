@@ -70,8 +70,8 @@ bioc_packages:
   - zlibbioc
   
 r_github_packages:
- - rte-antares-rpackage/antaresRead@next_release
- - rte-antares-rpackage/antaresProcessing@next_release
+ - rte-antares-rpackage/antaresRead@develop
+ - rte-antares-rpackage/antaresProcessing@develop
  #- rte-antares-rpackage/leaflet.minicharts
  # - rte-antares-rpackage/manipulateWidget@master 
  #- rte-antares-rpackage/antaresMaps@develop
