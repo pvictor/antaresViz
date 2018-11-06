@@ -24,12 +24,13 @@ environment:
 
 
 build_script:
+  - travis-tool.sh install_bioc BiocVersion
+  - travis-tool.sh install_bioc_deps
   - travis-tool.sh install_deps
   - travis-tool.sh bioc_check
 #before  - ./travis-tool.sh install_github Bioconductor-mirror/zlibbioc
 #  - ./travis-tool.sh install_github Bioconductor-mirror/rhdf5
 #after
-  - travis-tool.sh install_bioc_deps
   - ./travis-tool.sh install_github rte-antares-rpackage/antaresRead@develop
   - ./travis-tool.sh install_github rte-antares-rpackage/antaresProcessing@develop
   
