@@ -27,13 +27,13 @@ environment:
     USE_RTOOLS: true
     CRAN: http://cran.rstudio.com
     
-   - R_VERSION: devel
-     R_ARCH: x64
-     GCC_PATH: mingw_64
-     USE_RTOOLS: true
+  - R_VERSION: devel
+    R_ARCH: x64
+    GCC_PATH: mingw_64
+    USE_RTOOLS: true
     
-   - R_VERSION: stable
-     USE_RTOOLS: true
+  - R_VERSION: stable
+    USE_RTOOLS: true
 
 build_script:
   - travis-tool.sh install_bioc BiocVersion
