@@ -233,7 +233,7 @@ prodStack <- function(x,
   
   #we can hide these values
   prodStackValHidden <- c("H5request", "timeSteph5", "tables", "mcYearH5", "mcYear", "main", "dateRange", 
-                               "stack", "unit", "areas", "legend", "stepPlot", "drawPoints")
+                          "stack", "unit", "areas", "legend", "stepPlot", "drawPoints")
   prodStackValCompare <- c("mcYear", "main", "unit", "areas", "legend", "stack", "stepPlot", "drawPoints")
   
   listParamsCheck <- list(
@@ -261,7 +261,7 @@ prodStack <- function(x,
   
   init_areas <- areas
   init_dateRange <- dateRange
-
+  
   processFun <- function(x) {
     
     .check_x_antaresData(x)
@@ -328,12 +328,17 @@ prodStack <- function(x,
       #   }
       # }
       
-      names(stackOpts$variables) <- sapply(names(stackOpts$variables), function(x){
-        .getColumnsLanguage(x, language)
-      })
-      names(stackOpts$lines) <- sapply(names(stackOpts$lines), function(x){
-        .getColumnsLanguage(x, language)
-      })
+      if (!is.null(stackOpts$variables)) {
+        names(stackOpts$variables) <- sapply(names(stackOpts$variables), function(x){
+          .getColumnsLanguage(x, language)
+        })
+      }
+      
+      if (!is.null(stackOpts$lines)) {
+        names(stackOpts$lines) <- sapply(names(stackOpts$lines), function(x){
+          .getColumnsLanguage(x, language)
+        })
+      }
       
       p <- try(.plotProdStack(dt,
                               stackOpts$variables,
@@ -422,9 +427,9 @@ prodStack <- function(x,
       .tryCloseH5()
       if (.id <= length(params$x)){
         widget <- params$x[[max(1, .id)]]$plotWithLegend(.id, areas, main,
-                                                        unit, stack, dateRange,
-                                                        mcYear, legend,
-                                                        stepPlot, drawPoints)
+                                                         unit, stack, dateRange,
+                                                         mcYear, legend,
+                                                         stepPlot, drawPoints)
         controlWidgetSize(widget, language)
       } else {
         return (combineWidgets(.getLabelLanguage("No data for this selection", language)))
@@ -720,10 +725,10 @@ prodStack <- function(x,
   }
   
   p <- .plotStack(dt, timeStep, simOptions(x), colors, lines, lineColors, lineWidth, legendId,
-             groupId,
-             main = main, ylab = sprintf("Production (%s)", unit), 
-             width = width, height = height, dateRange = dateRange, stepPlot = stepPlot, 
-             drawPoints = drawPoints, language = language, type = type)
+                  groupId,
+                  main = main, ylab = sprintf("Production (%s)", unit), 
+                  width = width, height = height, dateRange = dateRange, stepPlot = stepPlot, 
+                  drawPoints = drawPoints, language = language, type = type)
   p
 }
 
@@ -734,12 +739,17 @@ prodStackLegend <- function(stack = "eco2mix",
   
   stackOpts <- .aliasToStackOptions(stack)
   
-  names(stackOpts$variables) <- sapply(names(stackOpts$variables), function(x){
-    .getColumnsLanguage(x, language)
-  })
-  names(stackOpts$lines) <- sapply(names(stackOpts$lines), function(x){
-    .getColumnsLanguage(x, language)
-  })
+  if (!is.null(stackOpts$variables)) {
+    names(stackOpts$variables) <- sapply(names(stackOpts$variables), function(x){
+      .getColumnsLanguage(x, language)
+    })
+  }
+  if (!is.null(stackOpts$lines)) {
+    names(stackOpts$lines) <- sapply(names(stackOpts$lines), function(x){
+      .getColumnsLanguage(x, language)
+    })
+  }
+  
   
   tsLegend(
     labels = c(names(stackOpts$variables), names(stackOpts$lines)), 

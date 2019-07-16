@@ -72,11 +72,11 @@
     }
     
     g <- amBarplot(x = "timeId", y = setdiff(colnames(dt), "timeId"), 
-              data = data.frame(dt, check.names = FALSE), 
-              show_values = TRUE,
-              stack_type = "regular", 
-              groups_color = c(colors, lineColors), legend = TRUE, 
-              legendPosition = "bottom", export = TRUE, zoom = TRUE, main = main, ylab = ylab) 
+                   data = data.frame(dt, check.names = FALSE), 
+                   show_values = TRUE,
+                   stack_type = "regular", 
+                   groups_color = c(colors, lineColors), legend = TRUE, 
+                   legendPosition = "bottom", export = TRUE, zoom = TRUE, main = main, ylab = ylab) 
     
     g@otherProperties$thousandsSeparator <- " "
     
@@ -143,11 +143,15 @@
     
     # 5- Finally plot !!
     if(is.null(lines)){
-      colors <- unname(c("#FFFFFF", rev(colors), colors))
+      colors <- unname(c("#FFFFFF", "#FFFFFF", rev(colors), colors))
     } else {
-      colors <- unname(c(rep(rev(lineColors), length(lines)), "#FFFFFF", rev(colors), colors))
+      if (length(lines) == 1) {
+        colors <- unname(c(rep(rev(lineColors), 2), "#FFFFFF", rev(colors), colors))
+      } else {
+        colors <- unname(c(rep(rev(lineColors), length(lines)), "#FFFFFF", rev(colors), colors))
+      }
     }
-    
+    # browser()
     g <- dygraph(as.xts.data.table(dt), main = main, group = groupId, width = width, height = height)  %>%
       dyOptions(
         stackedGraph = TRUE, 
